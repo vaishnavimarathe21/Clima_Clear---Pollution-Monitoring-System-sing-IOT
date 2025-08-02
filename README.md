@@ -10,66 +10,72 @@
 
 **Clima Clear** is a smart IoT-based pollution monitoring system designed to measure and visualize real-time air quality data using various gas sensors connected to an **ESP32 microcontroller**.
 
-It detects gases such as **CO₂**, **CO**, **LPG**, and other harmful pollutants, and transmits the data over **Wi-Fi** for live tracking and analysis on a digital interface.
+It detects gases such as **CO₂**, **CO**, **LPG**, and other harmful pollutants, and transmits the data over **Wi-Fi** for live tracking and analysis through a web-based interface.
 
 ---
 
 ## ⚙️ Features
 
 - 📡 Real-time monitoring of air quality data
-- 🧪 Detects multiple gases using sensors like MQ-135, MQ-2, etc.
+- 🧪 Detects multiple gases using sensors like MQ-135, MQ-2, MQ-7, etc.
 - 🔌 Powered by ESP32 Wi-Fi microcontroller
-- 📊 Data can be visualized on web dashboards or serial monitor
-- ☁️ Ready for integration with cloud platforms like Blynk or Thingspeak
+- 🌐 Web interface for data visualization with charts and pollution analysis
+- ☁️ Ready for integration with platforms like Blynk or Thingspeak
 
 ---
 
 ## 🔧 Tech Stack & Components
 
-| Component | Description |
-|----------|-------------|
-| ESP32     | Wi-Fi microcontroller for IoT communication |
-| MQ Sensors | MQ-135 (air quality), MQ-2 (LPG, CO), MQ-7 (CO), etc. |
-| Breadboard & Jumpers | For connecting circuit |
-| Arduino IDE | Programming environment |
-| Blynk/Thingspeak | Optional dashboard for cloud visualization |
+| Component        | Description                                     |
+|------------------|-------------------------------------------------|
+| ESP32            | Wi-Fi microcontroller for IoT communication     |
+| MQ Sensors       | MQ-135 (Air quality), MQ-2 (LPG), MQ-7 (CO)     |
+| DHT11/DHT22      | For temperature and humidity readings           |
+| Arduino IDE      | For ESP32 programming                           |
+| HTML, CSS, JS    | Frontend dashboard for result and graph display |
 
 ---
 
-## 🖼️ Project Images
+## 🖼️ Project Screenshots
 
-> 📌 Replace the links below with your actual image URLs (GitHub-hosted or public links)
+> These are real interface screenshots from your ClimaClear system:
 
 <div align="center">
-  <img src="https://via.placeholder.com/600x400.png?text=Project+Hardware+Setup" width="400" alt="ClimaClear Setup" />
-  <img src="https://via.placeholder.com/600x400.png?text=ESP32+with+Gas+Sensors" width="400" alt="ESP32 and Sensors" />
+  <img src="https://github.com/vaishnavimarathe21/Clima_Clear---Pollution-Monitoring-System-sing-IOT/assets/your-github-userid/Screenshot1.png" width="500" alt="Home Page ClimaClear" />
+  <br><br>
+  <img src="https://github.com/vaishnavimarathe21/Clima_Clear---Pollution-Monitoring-System-sing-IOT/assets/your-github-userid/Screenshot2.png" width="500" alt="Result & Analysis Page" />
+  <br><br>
+  <img src="https://github.com/vaishnavimarathe21/Clima_Clear---Pollution-Monitoring-System-sing-IOT/assets/your-github-userid/Screenshot3.png" width="500" alt="Gas Levels Chart" />
 </div>
+
+> 📌 Upload your screenshots to the **GitHub repository's `assets` folder** or drag them into the README file via GitHub UI. Update the `src` links above with actual GitHub-hosted image URLs.
 
 ---
 
 ## 🚀 How It Works
 
-1. ESP32 reads real-time data from gas sensors
-2. Data is processed in Arduino IDE and printed to serial monitor or cloud dashboard
-3. Wi-Fi module (inside ESP32) transmits data wirelessly
-4. Optionally, cloud dashboards like Blynk/Thingspeak show air quality graphs and alerts
+1. ESP32 reads sensor values for gases, temperature, and humidity.
+2. Sensor data is processed and sent via Wi-Fi.
+3. Frontend displays results with graphs and real-time analysis.
+4. User can monitor pollution levels and changes easily.
 
 ---
 
-## 🛠️ Getting Started
+## 📋 Demo & UI Flow
 
-1. Connect ESP32 with gas sensors via breadboard
-2. Program ESP32 using Arduino IDE
-3. Upload code and open Serial Monitor for real-time data
-4. (Optional) Connect to cloud platforms for remote access
+- **Home Page** welcomes users with intro and navigation  
+- **Result & Analysis** page shows live pollution levels (CO, NO₂, SO₂, PM2.5, etc.)  
+- **Graphical visualization** helps interpret real-time air data effectively
 
 ---
 
-## 📷 Demo Preview (Optional)
+## 📬 Contact
 
-> You can upload a GIF or YouTube demo and embed it here:
+If you want to know more or collaborate, feel free to connect:
 
-```html
-<a href="https://youtu.be/demo-link">
-  <img src="https://via.placeholder.com/800x450.png?text=Watch+Demo" alt="Project Demo">
-</a>
+📧 [marathekhushi6@gmail.com](mailto:marathekhushi6@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/vmarathe21)
+
+---
+
+> “Track the air. Protect the future. 🌿 ClimaClear makes every breath smarter.”
