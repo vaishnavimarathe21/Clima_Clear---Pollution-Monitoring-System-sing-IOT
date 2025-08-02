@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+  <!-- Navigation -->
+  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature and Humidity Dashboard</title>
+  <link href="css/all.css" rel="stylesheet" style="margin-bottom: 100px">
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 90%;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      color: #555;
+    }
+
+    .card p {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    canvas {
+      max-width: 100%;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Temperature and Humidity Dashboard</h1>
+    <div class="grid">
+      <!-- Numeric Data -->
+      <div class="card">
+        <h2>Temperature</h2>
+        <p id="temperature">--</p>
+      </div>
+      <div class="card">
+        <h2>Humidity</h2>
+        <p id="humidity">--</p>
+      </div>
+      <!-- Charts -->
+      <div>
+        <canvas id="tempChart"></canvas>
+      </div>
+      <div>
+        <canvas id="humidityChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ThingSpeak API details
+    const API_KEY = "A7EI7A898PT1YC30";
+    const CHANNEL_ID = "2758511"; // Replace with your ThingSpeak channel ID
+    const FETCH_URL = https://api.thingspeak.com/channels/${CHANNEL_ID}/feeds.json?api_key=${API_KEY}&results=20;
+
+    // DOM Elements
+    const temperatureElement = document.getElementById("temperature");
+    const humidityElement = document.getElementById("humidity");
+
+    // Initialize charts
+    const tempCtx = document.getElementById('tempChart').getContext('2d');
+    const humidityCtx = document.getElementById('humidityChart').getContext('2d');
+
+    const tempChart = new Chart(tempCtx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Temperature (°C)',
+          data: [],
+          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderWidth: 2,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            title: { display: true, text: 'Timestamp' }
+          },
+          y: {
+            title: { display: true, text: 'Temperature (°C)' }
+          }
+        }
+      }
+    });
+
+    const humidityChart = new Chart(humidityCtx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Humidity (%)',
+          data: [],
+          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderWidth: 2,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            title: { display: true, text: 'Timestamp' }
+          },
+          y: {
+            title: { display: true, text: 'Humidity (%)' }
+          }
+        }
+      }
+    });
+
+    // Fetch data from ThingSpeak and update charts and numeric values
+    async function fetchData() {
+      try {
+        const response = await fetch(FETCH_URL);
+        const data = await response.json();
+
+        const timestamps = data.feeds.map(feed => new Date(feed.created_at).toLocaleTimeString());
+        const temperatures = data.feeds.map(feed => parseFloat(feed.field1));
+        const humidities = data.feeds.map(feed => parseFloat(feed.field2));
+
+        // Update Numeric Values
+        const latestTemperature = temperatures[temperatures.length - 1];
+        const latestHumidity = humidities[humidities.length - 1];
+        temperatureElement.textContent = latestTemperature ? latestTemperature.toFixed(1) : "--";
+        humidityElement.textContent = latestHumidity ? latestHumidity.toFixed(1) : "--";
+
+        // Update Temperature Chart
+        tempChart.data.labels = timestamps;
+        tempChart.data.datasets[0].data = temperatures;
+        tempChart.update();
+
+        // Update Humidity Chart
+        humidityChart.data.labels = timestamps;
+        humidityChart.data.datasets[0].data = humidities;
+        humidityChart.update();
+      } catch (error) {
+        console.error("Error fetching data from ThingSpeak:", error);
+      }
+    }
+
+    // Refresh data every 15 seconds
+    fetchData();
+    setInterval(fetchData, 15000);
+  </script>
+</body>
+</html>

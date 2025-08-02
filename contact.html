@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>ClimaClear </title>
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Fontawesome CSS -->
+	<link href="css/all.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-light top-nav fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+            <img class="logo" src="images/logo.png" alt="" style="height: 80px;width: 120px" />
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="fas fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="about.html">About</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                     
+                  <li class="nav-item">
+                     <a class="nav-link active" href="contact.html">Result & Analysis</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <li class="nav-link">
+                      <a class="nav-link" href="https://thingspeak.mathworks.com/channels">Temperature and Humidity</a>
+                   </li>
+               </ul>
+            </div>
+        </div>
+    </nav>
+	
+	<!-- full Title -->
+	<div class="full-title">
+		<div class="container">
+			<!-- Page Heading/Breadcrumbs -->
+			<h1 class="mt-4 mb-3">Result & Analysis
+				<small>Subheading</small>
+			</h1>
+		</div>
+	</div>
+
+    <!-- Page Content -->
+    <div class="container">
+		<div class="breadcrumb-main">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="index.html">Home</a>
+				</li>
+				<li class="breadcrumb-item active">Contact</li>
+			</ol>
+		</div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Air Pollution Monitoring</title>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <style>
+        canvas {
+          max-width: 500px; /* Medium size graphs */
+          max-height: 300px;
+          margin: 20px auto;
+          display: block; /* Center the graphs */
+        }
+        body {
+          text-align: center;
+          font-family: Arial, sans-serif;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Air Pollution Monitoring System</h1>
+    
+      <!-- Graph 1: Gas Levels -->
+      <h2>Gas Levels</h2>
+      <canvas id="gasLevelsChart"></canvas>
+    
+      <!-- Graph 2: Max and Min Gas Levels -->
+      <h2>Maximum and Minimum Gas Levels in Delhi</h2>
+      <canvas id="minMaxChart"></canvas>
+    
+      <!-- Graph 3: Pie Chart for Gas Percentage -->
+      <h2>Gas Composition Percentage in Delhi</h2>
+      <canvas id="pieChart"></canvas>
+    
+      <script>
+        // First Graph: Current Gas Levels
+        const gasLevelsCtx = document.getElementById('gasLevelsChart').getContext('2d');
+        const gasLevelsChart = new Chart(gasLevelsCtx, {
+          type: 'bar',
+          data: {
+            labels: ['CO', 'NO2', 'SO2', 'O3', 'PM2.5'], // Gas names
+            datasets: [{
+              label: 'Current Levels in Delhi (ppm)',
+              data: [12, 25, 10, 18, 15], // Replace with actual gas data
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)'
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+    
+        // Second Graph: Max and Min Gas Levels
+        const minMaxCtx = document.getElementById('minMaxChart').getContext('2d');
+        const minMaxChart = new Chart(minMaxCtx, {
+          type: 'line',
+          data: {
+            labels: ['CO', 'NO2', 'SO2', 'O3', 'PM2.5'], // Gas names
+            datasets: [
+              {
+                label: 'Maximum Levels in Delhi (ppm)',
+                data: [20, 30, 18, 25, 22], // Replace with max values
+                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                fill: true
+              },
+              {
+                label: 'Minimum Levels in Delhi (ppm)',
+                data: [5, 12, 8, 10, 9], // Replace with min values
+                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                fill: true
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+    
+        // Third Graph: Pie Chart for Gas Composition Percentage
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        const pieChart = new Chart(pieCtx, {
+          type: 'pie',
+          data: {
+            labels: ['CO', 'NO2', 'SO2', 'O3', 'PM2.5'], // Gas names
+            datasets: [{
+              label: 'Gas Composition',
+              data: [20, 25, 15, 30, 10], // Replace with percentage values
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(54, 162, 235, 0.8)',
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)'
+              ]
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false
+          }
+        });
+      </script>
+    </body>
+    </html>
+    
+
+
+
+      <!-- Content Row -->
+      <div class="row">
+       
+        </div>
+        
+        <!-- Contact Details Column -->
+        <div class="col-lg-4 mb-4 contact-right">
+          
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!--footer starts from here-->
+    <footer class="footer">
+        <div class="container bottom_border">
+            <div class="row">
+               <div class="col-lg-3 col-md-6 col-sm-6 col">
+					<h5 class="headin5_amrc col_white_amrc pt2"></h5>
+					<!--headin5_amrc-->
+					
+               </div>
+               <div class="col-lg-3 col-md-6 col-sm-6 col">
+					
+					<!--footer_ul2_amrc ends here-->
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+					<!--headin5_amrc-->
+					<ul class="footer_ul_amrc">
+						<li><a href="#">Default Version</a></li>
+						<li><a href="#">Boxed Version</a></li>
+						<li><a href="#">Our Team </a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Our Services</a></li>
+						<li><a href="#">Get In Touch</a></li>
+					</ul>
+					<!--footer_ul_amrc ends here-->
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 ">
+					<h5 class="headin5_amrc col_white_amrc pt2">Recent posts</h5>
+					<!--headin5_amrc-->
+					<ul class="footer_ul_amrc">
+						<li class="media">
+							<div class="media-left">
+								<img class="img-fluid" src="images/post-img-01.jpg" alt="" />
+							</div>
+							<div class="media-body">
+								<p>How to find best dog food?</p>
+								<span>22 Sep 2018</span>
+							</div>
+						</li>
+						<li class="media">
+							<div class="media-left">
+								<img class="img-fluid" src="images/post-img-02.jpg" alt="" />
+							</div>
+							<div class="media-body">
+								<p>How to find best dog food?</p>
+								<span>34 Sep 2018</span>
+							</div>
+						</li>
+						<li class="media">
+							<div class="media-left">
+								<img class="img-fluid" src="images/post-img-03.jpg" alt="" />
+							</div>
+							<div class="media-body">
+								<p>How to find best dog food?</p>
+								<span>30 Sep 2018</span>
+							</div>
+						</li>
+					</ul>
+					<!--footer_ul_amrc ends here-->
+				</div>
+			</div>
+		</div>
+        <div class="container">
+            <div class="footer-logo">
+				<a href="#"><img src="images/footer-logo.png" alt="" /></a>
+			</div>
+            <!--foote_bottom_ul_amrc ends here-->
+            <p class="copyright text-center">All Rights Reserved. &copy; 2024<a href="#">ClimaClear</a> Design By : 
+				<a href="https://html.design/">RCPIT</a>
+            </p>
+            
+            <!--social_footer_ul ends here-->
+        </div>
+    </footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Contact form JavaScript -->
+<script src="js/jqBootstrapValidation.js"></script>
+<script src="js/contact_me.js"></script>
+</body>
+</html>
