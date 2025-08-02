@@ -16,11 +16,11 @@ It detects gases such as **CO₂**, **CO**, **LPG**, and other harmful pollutant
 
 ## ⚙️ Features
 
-- 📡 Real-time monitoring of air quality data
-- 🧪 Detects multiple gases using sensors like MQ-135, MQ-2, MQ-7, etc.
-- 🔌 Powered by ESP32 Wi-Fi microcontroller
-- 🌐 Web interface for data visualization with charts and pollution analysis
-- ☁️ Ready for integration with platforms like Blynk or Thingspeak
+- 📡 Real-time monitoring of air quality data  
+- 🧪 Detects multiple gases using sensors like MQ-135, MQ-2, MQ-7, etc.  
+- 🔌 Powered by ESP32 Wi-Fi microcontroller  
+- 🌐 Web interface for data visualization with charts and pollution analysis  
+- ☁️ Ready for integration with platforms like Blynk or Thingspeak  
 
 ---
 
@@ -38,40 +38,36 @@ It detects gases such as **CO₂**, **CO**, **LPG**, and other harmful pollutant
 
 ## 🖼️ Project Screenshots
 
-> These are real interface screenshots from your ClimaClear system:
+> These screenshots are displayed directly from your project repository
 
 <div align="center">
-  <img src="https://github.com/vaishnavimarathe21/Clima_Clear---Pollution-Monitoring-System-sing-IOT/assets/your-github-userid/Screenshot1.png" width="500" alt="Home Page ClimaClear" />
+  <img src="./assets/Screenshot1.png" width="500" alt="Home Page - ClimaClear" />
   <br><br>
-  <img src="https://github.com/vaishnavimarathe21/Clima_Clear---Pollution-Monitoring-System-sing-IOT/assets/your-github-userid/Screenshot2.png" width="500" alt="Result & Analysis Page" />
+  <img src="./assets/Screenshot2.png" width="500" alt="Result and Analysis Page" />
   <br><br>
-  <img src="https://github.com/vaishnavimarathe21/Clima_Clear---Pollution-Monitoring-System-sing-IOT/assets/your-github-userid/Screenshot3.png" width="500" alt="Gas Levels Chart" />
+  <img src="./assets/Screenshot3.png" width="500" alt="Gas Levels Graph" />
 </div>
-
-> 📌 Upload your screenshots to the **GitHub repository's `assets` folder** or drag them into the README file via GitHub UI. Update the `src` links above with actual GitHub-hosted image URLs.
 
 ---
 
 ## 🚀 How It Works
 
-1. ESP32 reads sensor values for gases, temperature, and humidity.
-2. Sensor data is processed and sent via Wi-Fi.
-3. Frontend displays results with graphs and real-time analysis.
-4. User can monitor pollution levels and changes easily.
+1. ESP32 reads sensor values for gases, temperature, and humidity  
+2. Sensor data is processed and sent via Wi-Fi  
+3. Frontend displays results with graphs and real-time analysis  
+4. User can monitor pollution levels and changes easily  
 
 ---
 
-## 📋 Demo & UI Flow
+## 📋 Demo Flow
 
-- **Home Page** welcomes users with intro and navigation  
-- **Result & Analysis** page shows live pollution levels (CO, NO₂, SO₂, PM2.5, etc.)  
-- **Graphical visualization** helps interpret real-time air data effectively
+- **Home Page** welcomes users with introduction and navigation  
+- **Result & Analysis** shows gas levels and environmental data  
+- **Graph section** shows live chart updates for CO, NO₂, SO₂, PM2.5, etc.  
 
 ---
 
 ## 📬 Contact
-
-If you want to know more or collaborate, feel free to connect:
 
 📧 [marathekhushi6@gmail.com](mailto:marathekhushi6@gmail.com)  
 🔗 [LinkedIn](https://www.linkedin.com/in/vmarathe21)
